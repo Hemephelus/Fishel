@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import emptyPage from "../../assets/Empty_page.svg";
-import { createAiArray } from "../../utils";
+// import { createAiArray } from "../../utils";
 
 const Theories = ({
   allQuestions,
@@ -11,9 +11,8 @@ const Theories = ({
   callback,
 }) => {
   const ScoreWithAIUrl =
-  // "https://script.google.com/macros/s/AKfycbxdVPIoDdeECQIAKPnoVg2yEd2nO3Y9LYr557-XySaPu_1tmcP_pOPsRHH0IgjSLzi2pA/exec"
-  "https://script.google.com/macros/s/AKfycby8UB5rrvdZFsbvoIz3wSrtpZdNACpOS-GyMcgsa3Ofv7jE5QEcCx1z47TAVjQ1wROklg/exec"
-    // "https://script.google.com/macros/s/AKfycbx6CvCzUnmrJ0U89edKvCDwD7Ytcu-3HGCBp5T0JN46nMtSikvc9L2Yss86KqOWiXcT6w/exec";
+  "https://script.google.com/macros/s/AKfycbxSPAIy4a35X8YZx-x1LOZ6QpfeRj31LiMywT5WChrkm7E5Gl5n9-im9dwa6YgZJ_SAJA/exec"
+ 
   const scoringSheet = JSON.parse(localStorage.getItem("scoringSheet"));
   let scores = JSON.parse(localStorage.getItem("scoresPerQuestionType"));
   let aiResults = JSON.parse(localStorage.getItem("aiResults"));
@@ -45,20 +44,11 @@ const Theories = ({
 
   async function fetchResult(message, index) {
     console.log("Started");
-    const requestOptions = {
-      method: "POST",
-      cache: "no-cache",
-      redirect: "follow",
-      body: JSON.stringify({
-        markingGuild: allQuestions[index].question_answers[0].replace(
-          /\\n/g,
-          "\n"
-        ),
-        userResponse: message[index],
-        question: allQuestions[index].question_text,
-      }),
-    };
-    const response = await fetch(ScoreWithAIUrl, requestOptions);
+    const markingGuide = allQuestions[index].question_answers[0].replace(/\\n/g,"\n")
+    const userResponse = message
+    const question = allQuestions[index].question_text
+    const paramUrl = `${ScoreWithAIUrl}?markingGuide=${markingGuide}&userResponse=${userResponse}&question=${question}`
+    const response = await fetch(paramUrl);
     const data = await response.json();
     scoreTest(data[0].data, index);
     let newUserResults = userResults.map((userResult,i) => {
@@ -119,7 +109,6 @@ const Theories = ({
 
     setTotalAIScore(scores.theory);
   };
-  console.log(totalAIScore);
 
   function getScore(data) {
     return data.match(/\d+\/\d+/g)[0].split("/")[0];

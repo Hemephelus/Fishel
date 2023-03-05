@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import emptyPage from "../../assets/Empty_page.svg";
 
@@ -97,7 +97,7 @@ const Objectives = ({
                             : ""
                         }`}
                       >
-                        {question.question_answers[0]}
+                        {/* {question.question_answers[0]} */}
                         <input
                           type="radio"
                           disabled={submit}

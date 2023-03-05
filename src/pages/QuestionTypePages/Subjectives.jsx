@@ -78,7 +78,7 @@ const Subjectives = ({
                 <div>{question.question_text}</div>
                 <div className="flex flex-col gap-2">
                   <div>
-                    {question.question_answers[0]}
+                    {/* {question.question_answers[0]} */}
                     <input
                       type="text"
                       disabled={submit}
