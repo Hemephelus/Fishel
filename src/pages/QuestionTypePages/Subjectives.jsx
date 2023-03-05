@@ -56,7 +56,7 @@ const Subjectives = ({
         <div className="flex flex-col gap-8 px-2 relative">
           {submit ? (
             <div className=" sticky top-0 bg-[#353C3E] py-2 border-dashed border-y-2 border-gray-600">
-              Score : {TotalScore} / {allQuestions.length} Marks{" "}
+              Score : {TotalScore} / {allQuestions.length*10}
             </div>
           ) : (
             <></>
