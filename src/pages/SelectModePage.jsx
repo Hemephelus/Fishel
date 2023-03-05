@@ -11,7 +11,7 @@ const SelectModePage = () => {
             <div className="bg-[#E3F1F4] h-[1px] lg:h-[2px] w-full"></div>
           </div>
           <div className="flex flex-wrap flex-col lg:flex-row gap-4 lg:justify-between lg:gap-8">
-            <Link to="/create-mode">
+            <div to="/create-mode" >
               <div className=" lg:w-[320px]  rounded-lg lg:rounded lg:h-[225px] bg-[url('/src/assets/create_mode.png')] bg-cover bg-no-repeat bg-center hover:border-solid hover:border-2  hover:border-[#e3f1f4] delay-300">
                 <div className=" h-[150px] lg:h-full lg:w-full bg-[#353c3ea4] rounded-lg cursor-pointer p-6 hover:bg-[#353c3ee6] duration-300 delay-300">
                   <div className=" space-y-2">
@@ -20,13 +20,14 @@ const SelectModePage = () => {
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
             <Link to="/generate-mode">
               <div className=" lg:w-[320px]  rounded-lg lg:rounded lg:h-[225px] bg-[url('/src/assets/print_mode.png')] bg-cover bg-no-repeat bg-center hover:border-solid hover:border-2  hover:border-[#e3f1f4] delay-300">
                 <div className=" h-[150px] lg:h-full lg:w-full bg-[#353c3ea4] rounded-lg cursor-pointer p-6 hover:bg-[#353c3ee6] duration-300 delay-300">
                   <div className=" space-y-2">
                     <h1 className="font-bold text-2xl">Generate Mode</h1>
                     <p>Generate, download and print exam or test questions.</p>
+                    <p><b>Select Answer online, and add a theory question to use AI feature.</b></p>
                   </div>
                 </div>
               </div>
